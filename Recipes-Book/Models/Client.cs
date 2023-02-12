@@ -12,15 +12,24 @@ namespace Recipes_Book.Models
         private int id;
         private string name;
         private string password;
-        private string recipes;
 
-        public Client(int id, string name, string password, string recipes)
+        public Client(int id, string name, string password)
         {
 
             this.id = id;
             this.name = name;
             this.password = password;
-            this.recipes = recipes;
+
+        }
+
+        public Client(string text)
+        {
+
+            string[] prop = text.Split(';');
+
+            this.id = int.Parse(prop[0]);
+            this.name = prop[1];
+            this.password = prop[2];
 
         }
 
@@ -37,9 +46,16 @@ namespace Recipes_Book.Models
             return password;
         }
 
-        public string getRecipes()
+        public string descreiere()
         {
-           return recipes;
+
+            string t = "";
+
+            t += "Username " + getName() + "\n";
+            t += "Password " + getPassword() + "\n";
+
+
+            return t;
         }
 
     }

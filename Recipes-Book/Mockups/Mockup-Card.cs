@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace Recipes_Book.Mockups
 {
-    public partial class Mockup_login : Form
+    public partial class Mockup_Card : Form
     {
-        public Mockup_login()
+        public Mockup_Card()
         {
             InitializeComponent();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
         }
     }
 }

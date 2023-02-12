@@ -18,9 +18,8 @@ namespace Recipes_Book.Models
         private string steps;
         private string tag;
         private string image;
-        private int rating;
 
-        public Recipe(int idClient,int id, string name, string ingredients, int cookTime, string steps, string tag, string image, int rating) { 
+        public Recipe(int idClient,int id, string name, string ingredients, int cookTime, string steps, string tag, string image) { 
         
             this.idClient = idClient;
             this.id = id;
@@ -30,9 +29,24 @@ namespace Recipes_Book.Models
             this.steps = steps;
             this.tag = tag;
             this.image= image;
-            this.rating = rating; 
 
         }
+
+        public Recipe(string text)
+        {
+
+            string[] prop = text.Split(';');
+
+            this.idClient = int.Parse(prop[0]);
+            this.id= int.Parse(prop[1]);
+            this.name = prop[2];
+            this.ingredients= prop[3];
+            this.cookingTime= int.Parse(prop[4]);
+            this.steps = prop[5];
+            this.tag = prop[6];
+
+        }
+
 
         public int getIdClient()
         {
@@ -100,12 +114,6 @@ namespace Recipes_Book.Models
         {
             this.image = image;
         }
-
-        public int getRating()
-        {
-            return rating;
-        }
-
 
 
     }

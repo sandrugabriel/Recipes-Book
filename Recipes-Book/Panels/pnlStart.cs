@@ -28,7 +28,7 @@ namespace Recipes_Book.Panels
             btnLogin= new Button();
             this.Controls.Add(btnLogin);
 
-            Font font = new Font("Microsoft YaHei UI", 20);
+            Font font = new Font("Microsoft YaHei UI Light", 20);
 
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Text = "Login";

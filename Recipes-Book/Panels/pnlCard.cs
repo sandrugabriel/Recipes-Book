@@ -33,8 +33,8 @@ namespace Recipes_Book.Panels
 
             recipe = recipe1;
 
-            Font font = new Font("Cambria", 13);
-            Font font1 = new Font("Cambria", 12);
+            Font font = new Font("Microsoft YaHei UI Light", 13);
+            Font font1 = new Font("Microsoft YaHei UI Light", 12);
 
             //Title
             lblTitle = new Label();
@@ -45,7 +45,7 @@ namespace Recipes_Book.Panels
             this.lblTitle1.Name = "lblTitle1";
 
             this.lblTitle.Location = new System.Drawing.Point(21, 13);
-            this.lblTitle1.Location = new System.Drawing.Point(42, 42);
+            this.lblTitle1.Location = new System.Drawing.Point(21, 42);
             this.lblTitle.AutoSize = true;
             this.lblTitle1.AutoSize = true;
             this.lblTitle.Font = font;

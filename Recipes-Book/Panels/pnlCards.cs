@@ -43,7 +43,7 @@ namespace Recipes_Book.Panels
             this.lblInfo.Text = "To change the data and delete a client, click on card";
             this.lblInfo.BackColor = System.Drawing.Color.Yellow;
             this.lblInfo.AutoSize = true;
-            this.lblInfo.Font = new System.Drawing.Font("Microsoft YaHei UI", 10);
+            this.lblInfo.Font = new System.Drawing.Font(" Microsoft YaHei UI Light", 10);
 
             this.form = form1;
 

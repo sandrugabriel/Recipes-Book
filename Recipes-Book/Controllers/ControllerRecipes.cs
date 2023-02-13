@@ -59,20 +59,59 @@ namespace Recipes_Book.Controllers
             return -1;
         }
 
-        public void getBooks(List<Recipe> books1)
+        public void getRecipes(List<Recipe> recipes1)
         {
 
             for (int i = 0; i < recipes.Count; i++)
             {
 
                 Recipe a = recipes[i];
-                books1.Add(a);
+                recipes1.Add(a);
             }
 
 
         }
 
+        public Recipe getRecipeById(int id)
+        {
 
+            for (int i = 0; i < recipes.Count; i++)
+            {
+                if (recipes[i].getId() == id)
+                {
+                    return recipes[i];
+                }
+            }
+
+            return null;
+        }
+
+        public int generareId()
+        {
+            Random random = new Random();
+
+            int id = random.Next();
+            while (this.getRecipeById(id) != null)
+            {
+
+                id = random.Next();
+
+            }
+
+
+            return id;
+
+        }
+
+        public void save(string textul)
+        {
+
+            string text = textul;
+            string path = Application.StartupPath + @"/data/recipes.txt";
+            File.AppendAllText(path, text + "\n");
+
+
+        }
 
 
 

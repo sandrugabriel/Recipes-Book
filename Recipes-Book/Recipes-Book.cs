@@ -32,7 +32,7 @@ namespace Recipes_Book
             label2.Text = controllerClients.numeById(id);
 
             recipes = new List<Recipe>();
-            controllerRecipes.getBooks(recipes);
+            controllerRecipes.getRecipes(recipes);
 
             this.Controls.Add(new pnlCards(recipes,this));
 
@@ -69,6 +69,12 @@ namespace Recipes_Book
         private void button3_Click(object sender, EventArgs e)
         {
             this.Controls.Add(new pnlCards(recipes,this));
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Controls.Add(new pnlAddRecipes(id,this));
+            this.removepnl("pnlCards");
         }
     }
 }

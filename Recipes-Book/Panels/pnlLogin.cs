@@ -46,7 +46,7 @@ namespace Recipes_Book.Panels
             this.Controls.Add(txtName);
 
 
-            Font font = new Font("Microsoft YaHei UI", 14);
+            Font font = new Font(" Microsoft YaHei UI Light", 14);
 
             this.lblName.AutoSize = true;
             this.lblName.Text = "Username";
@@ -79,7 +79,7 @@ namespace Recipes_Book.Panels
             this.btnLogin.Name = "btnName";
             this.btnLogin.Location = new System.Drawing.Point(155,290);
             this.btnLogin.Size = new System.Drawing.Size(130,60);
-            this.btnLogin.Font= new Font("Microsoft YaHei UI",20);
+            this.btnLogin.Font= new Font(" Microsoft YaHei UI Light", 20);
             this.btnLogin.Text = "Login";
             this.btnLogin.Click += new EventHandler(btnLogin_Click);
 
@@ -89,7 +89,7 @@ namespace Recipes_Book.Panels
             this.Controls.Add(lnlSignUp);
 
             lnlSignUp.AutoSize = true;
-            lnlSignUp.Font = new Font("Microsoft YaHei UI", 12);
+            lnlSignUp.Font = new Font("Microsoft YaHei UI Light", 12);
             lnlSignUp.Location = new System.Drawing.Point(370,360);
             lnlSignUp.Text = "Sign Up";
             lnlSignUp.Click += new EventHandler(lnlSignUp_Click);
@@ -99,7 +99,7 @@ namespace Recipes_Book.Panels
             info.Text = "Login";
             info.AutoSize = true;
             info.Location = new System.Drawing.Point(150,50);
-            info.Font = new Font("Microsoft YaHei UI", 20);
+            info.Font = new Font("Microsoft YaHei UI Light", 20);
         }
 
         private void lnlSignUp_Click(object sender, EventArgs e)

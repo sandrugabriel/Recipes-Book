@@ -294,6 +294,48 @@ namespace Recipes_Book.Controllers
 
         }
 
+        public int pozID(int id)
+        {
+
+            for (int i = 0; i < recipes.Count; i++)
+            {
+                if (recipes[i].getId() == id)
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+
+        public void stergere(int id)
+        {
+            int p = pozID(id);
+            if (p == pozID(id))
+                recipes.RemoveAt(p);
+
+        }
+
+        public void deleteCarte(int id)
+        {
+            this.stergere(id);
+
+            string path = Application.StartupPath + @"/data/recipes.txt";
+            StreamWriter stream = new StreamWriter(path);
+
+            stream.Write(this.toSaveFisier());
+
+            stream.Close();
+        }
+
+
+
+
+
+
+
+
+
 
     }
 }

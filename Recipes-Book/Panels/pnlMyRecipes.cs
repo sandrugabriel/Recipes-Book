@@ -50,6 +50,7 @@ namespace Recipes_Book.Panels
 
             this.form = form1;
 
+            controllerRecipes.load();
 
         }
         public void createCard(int nrCollums)

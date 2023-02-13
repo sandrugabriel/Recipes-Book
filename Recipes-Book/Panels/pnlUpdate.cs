@@ -32,8 +32,9 @@ namespace Recipes_Book.Panels
         RichTextBox txtSteps;
 
         Button btnUpdate;
-
+        Button btnDelete;
         Button btnCancel;
+
 
         Form1 form;
 
@@ -174,6 +175,15 @@ namespace Recipes_Book.Panels
             this.btnCancel.BackColor = System.Drawing.Color.White;
             this.btnCancel.Click += new EventHandler(btnCancel_Click);
 
+            //Delete
+            btnDelete = new System.Windows.Forms.Button();
+            this.Controls.Add(btnDelete);
+            this.btnDelete.Location = new System.Drawing.Point(650, 420);
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.Font = font;
+            this.btnDelete.Size = new System.Drawing.Size(110, 55);
+            this.btnDelete.BackColor = System.Drawing.Color.White;
+            this.btnDelete.Click += new EventHandler(btnDelete_Click);
 
             this.txtName.Text = controllerRecipes.nameById(id);
             this.txtIngredients.Text = controllerRecipes.ingredientsById(id);
@@ -184,6 +194,16 @@ namespace Recipes_Book.Panels
 
             recipes = new List<Recipe>();
             controllerRecipes.getRecipes(recipes);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            controllerRecipes.deleteCarte(id);
+            this.form.removepnl("pnlUpdate");
+            controllerRecipes.getRecipes(recipes);
+            this.form.Controls.Add(new pnlCards(idClient, recipes, form));
+
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

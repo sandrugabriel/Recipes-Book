@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Recipes_Book.Panels
 {
-    internal class pnlCards:Panel
+    internal class pnlMyRecipes:Panel
     {
 
         List<Recipe> recipes = new List<Recipe>();
@@ -20,16 +20,16 @@ namespace Recipes_Book.Panels
 
         ControllerRecipes controllerRecipes;
 
-        public pnlCards(List<Recipe> recipe1, Form1 form1)
+        public pnlMyRecipes(List<Recipe> recipe1, Form1 form1)
         {
 
             controllerRecipes = new ControllerRecipes();
 
-            this.Name = "pnlCards";
+            this.Name = "pnlMyRecipes";
             this.BackColor = System.Drawing.Color.DarkGray;
             this.Size = new System.Drawing.Size(765, 412);
             this.Location = new System.Drawing.Point(5, 82);
-            this.BackColor = System.Drawing.Color.LightGray;
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
 
             recipes = recipe1;
 
@@ -40,7 +40,7 @@ namespace Recipes_Book.Panels
             this.lblInfo = new Label();
             this.Controls.Add(this.lblInfo);
 
-            this.lblInfo.Text = "Click on the card to see the card";
+            this.lblInfo.Text = "To change the data and delete a client, click on card";
             this.lblInfo.BackColor = System.Drawing.Color.Yellow;
             this.lblInfo.AutoSize = true;
             this.lblInfo.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 10);
@@ -67,7 +67,7 @@ namespace Recipes_Book.Panels
                 {
                     string title = pnlcard.lblTitle1.Text;
                     int id = controllerRecipes.idByNume(title);
-                    this.form.removepnl("pnlCards");
+                    this.form.removepnl("pnlMyRecipes");
                 }
                 x += 200;
 
@@ -84,6 +84,7 @@ namespace Recipes_Book.Panels
 
 
         }
+
 
 
 

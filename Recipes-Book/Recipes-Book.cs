@@ -35,7 +35,7 @@ namespace Recipes_Book
             controllerRecipes.getRecipes(recipes);
 
             this.Controls.Add(new pnlCards(recipes,this));
-
+            this.button3.Visible = false;
         }
 
         public void removepnl(string pnl)
@@ -68,13 +68,38 @@ namespace Recipes_Book
 
         private void button3_Click(object sender, EventArgs e)
         {
+            recipes.Clear();
+            controllerRecipes.getRecipes(recipes);
+
             this.Controls.Add(new pnlCards(recipes,this));
+            this.removepnl("pnlAddRecipe");
+            this.removepnl("pnlMyRecipes");
+            this.button5.Visible = true;
+            this.button3.Visible = false; 
+            this.button4.Visible = true;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             this.Controls.Add(new pnlAddRecipes(id,this));
             this.removepnl("pnlCards");
+            this.removepnl("pnlMyRecipes");
+            this.button5.Visible = false;
+            this.button3.Visible = true;
+            this.button4.Visible = true;
+            
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            recipes.Clear();
+            this.button4.Visible = false;
+            this.button3.Visible = true;
+            this.button5.Visible = true;
+            this.removepnl("pnlCards");
+            this.removepnl("pnlAddRecipe");
+            controllerRecipes.getMyRecipes(recipes, id);
+            this.Controls.Add(new pnlMyRecipes(recipes,this));
         }
     }
 }

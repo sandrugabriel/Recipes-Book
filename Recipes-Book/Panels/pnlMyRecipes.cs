@@ -3,6 +3,7 @@ using Recipes_Book.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,11 +19,13 @@ namespace Recipes_Book.Panels
 
         Form1 form;
 
+        private int idClient;
+
         ControllerRecipes controllerRecipes;
 
-        public pnlMyRecipes(List<Recipe> recipe1, Form1 form1)
+        public pnlMyRecipes(int idClient1,List<Recipe> recipe1, Form1 form1)
         {
-
+            idClient= idClient1;
             controllerRecipes = new ControllerRecipes();
 
             this.Name = "pnlMyRecipes";
@@ -68,6 +71,7 @@ namespace Recipes_Book.Panels
                     string title = pnlcard.lblTitle1.Text;
                     int id = controllerRecipes.idByNume(title);
                     this.form.removepnl("pnlMyRecipes");
+                    this.form.Controls.Add(new pnlUpdate(idClient, id, form));
                 }
                 x += 200;
 

@@ -20,9 +20,11 @@ namespace Recipes_Book.Panels
 
         ControllerRecipes controllerRecipes;
 
-        public pnlCards(List<Recipe> recipe1, Form1 form1)
-        {
+        private int idClient;
 
+        public pnlCards(int idClient1, List<Recipe> recipe1, Form1 form1)
+        {
+            idClient= idClient1;
             controllerRecipes = new ControllerRecipes();
 
             this.Name = "pnlCards";

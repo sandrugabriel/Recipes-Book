@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace Recipes_Book.Panels
 {
-    internal class pnlAddRecipes:Panel
+    internal class pnlUpdate:Panel
     {
 
         Label lblName;
         TextBox txtName;
 
         Label lblIngredients;
-        TextBox txtIngredients;
+        RichTextBox txtIngredients;
 
         Label lblTags;
         RadioButton radDinner;
@@ -31,23 +31,26 @@ namespace Recipes_Book.Panels
         Label lblSteps;
         RichTextBox txtSteps;
 
-        Button btnSave;
+        Button btnUpdate;
+
+        Button btnCancel;
 
         Form1 form;
 
         ControllerRecipes controllerRecipes;
 
+        private int id;
         private int idClient;
 
-        List<string> erori;
+        List<Recipe> recipes; 
 
-        public pnlAddRecipes(int idClient1,Form1 form1)
+        public pnlUpdate(int idClient1,int id1, Form1 form1)
         {
+            idClient= idClient1;
             controllerRecipes = new ControllerRecipes();
             form = form1;
-            idClient = idClient1;
-            erori = new List<string>();
-            this.Name = "pnlAddRecipe";
+            id = id1;
+            this.Name = "pnlUpdate";
             this.Size = new System.Drawing.Size(785, 475);
             this.Location = new System.Drawing.Point(6, 82);
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -57,7 +60,7 @@ namespace Recipes_Book.Panels
 
             //Name
             lblName = new Label();
-            txtName= new TextBox();
+            txtName = new TextBox();
             this.Controls.Add(lblName);
             this.Controls.Add(txtName);
             this.lblName.Text = "Name";
@@ -72,7 +75,7 @@ namespace Recipes_Book.Panels
 
             //Ingredients
             lblIngredients = new Label();
-            txtIngredients= new TextBox();
+            txtIngredients = new RichTextBox();
             this.Controls.Add(lblIngredients);
             this.Controls.Add(txtIngredients);
             this.lblIngredients.Text = "Ingredients";
@@ -80,13 +83,14 @@ namespace Recipes_Book.Panels
             this.lblIngredients.Location = new System.Drawing.Point(359, 85);
             this.lblIngredients.AutoSize = true;
             this.txtIngredients.Font = font1;
-            this.txtIngredients.Size = new System.Drawing.Size(198, 34);
+            this.txtIngredients.Size = new System.Drawing.Size(245, 44);
             this.txtIngredients.Location = new System.Drawing.Point(359, 130);
+            this.txtIngredients.AutoSize = true;
 
             //Tags
             lblTags = new Label();
             radBreakfast = new System.Windows.Forms.RadioButton();
-            radLunch= new System.Windows.Forms.RadioButton();
+            radLunch = new System.Windows.Forms.RadioButton();
             radDinner = new System.Windows.Forms.RadioButton();
             radSweet = new System.Windows.Forms.RadioButton();
             this.Controls.Add(lblTags);
@@ -103,7 +107,7 @@ namespace Recipes_Book.Panels
             this.radLunch.Name = "radLunch";
             this.radDinner.Name = "radDinner";
             this.radSweet.Name = "radSweet";
-            this.radBreakfast.Location = new System.Drawing.Point(640,130);
+            this.radBreakfast.Location = new System.Drawing.Point(640, 130);
             this.radBreakfast.Font = font1;
             this.radBreakfast.Text = "Breakfast";
             this.radBreakfast.AutoSize = true;
@@ -147,24 +151,80 @@ namespace Recipes_Book.Panels
             this.txtSteps.Size = new System.Drawing.Size(573, 140);
             this.txtSteps.Location = new System.Drawing.Point(64, 330);
             this.AutoScroll = true;
-            this.txtSteps.AutoSize= true;
+            this.txtSteps.AutoSize = true;
 
-            //Save
-            btnSave = new System.Windows.Forms.Button();
-            this.Controls.Add(btnSave);
-            this.btnSave.Location = new System.Drawing.Point(650, 360);
-            this.btnSave.Text = "Save";
-            this.btnSave.Font = font;
-            this.btnSave.Size = new System.Drawing.Size(110, 55);
-            this.btnSave.BackColor = System.Drawing.Color.White;
-            this.btnSave.Click += new EventHandler(btnSave_Click);
+            //Update
+            btnUpdate = new System.Windows.Forms.Button();
+            this.Controls.Add(btnUpdate);
+            this.btnUpdate.Location = new System.Drawing.Point(650, 360);
+            this.btnUpdate.Text = "Save";
+            this.btnUpdate.Font = font;
+            this.btnUpdate.Size = new System.Drawing.Size(110, 55);
+            this.btnUpdate.BackColor = System.Drawing.Color.White;
+            this.btnUpdate.Click += new EventHandler(btnUpdate_Click);
 
-            this.form.button5.Visible = true;
+
+            //Cancel
+            btnCancel = new System.Windows.Forms.Button();
+            this.Controls.Add(btnCancel);
+            this.btnCancel.Location = new System.Drawing.Point(650, 20);
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Font = font;
+            this.btnCancel.Size = new System.Drawing.Size(110, 55);
+            this.btnCancel.BackColor = System.Drawing.Color.White;
+            this.btnCancel.Click += new EventHandler(btnCancel_Click);
+
+
+            this.txtName.Text = controllerRecipes.nameById(id);
+            this.txtIngredients.Text = controllerRecipes.ingredientsById(id);
+            this.txtSteps.Text = controllerRecipes.stepsById(id);
+            this.numericTime.Value = controllerRecipes.timeById(id);
+            string radioSel = controllerRecipes.tagById(id);
+            getradio(radioSel);
+
+            recipes = new List<Recipe>();
+            controllerRecipes.getRecipes(recipes);
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            recipes.Clear();
+            controllerRecipes.getMyRecipes(recipes, idClient);
+
+
+            this.form.removepnl("pnlUpdate");
+            this.form.Controls.Add(new pnlMyRecipes(idClient,recipes,form));
+            this.form.button4.Visible = true;
+
+
+        }
+
+
+        public void getradio(string a)
+        {
+            if (radBreakfast.Text.Equals(a))
+            {
+                radBreakfast.Checked = true;
+            }
+            else if (radLunch.Text.Equals(a))
+            {
+                radLunch.Checked = true;
+            }
+            else if (radDinner.Text.Equals(a))
+            {
+                radDinner.Checked = true;
+            }
+            else if (radSweet.Text.Equals(a))
+            {
+                radSweet.Checked = true;
+            }
+
+        }
+
 
         public string radioBtnActiv()
         {
-            if(radBreakfast.Checked == true)
+            if (radBreakfast.Checked == true)
             {
                 return radBreakfast.Text;
             }
@@ -184,75 +244,24 @@ namespace Recipes_Book.Panels
             return null;
         }
 
-        private void errors()
+
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
 
-            erori.Clear();
+            controllerRecipes.setNume(id,txtName.Text);
+            controllerRecipes.setIngredients(id,txtIngredients.Text);
+            controllerRecipes.setsteps(id,txtSteps.Text);
+            controllerRecipes.settime(id, ((int)numericTime.Value));
+            controllerRecipes.settag(id, radioBtnActiv());
+            controllerRecipes.save();
 
-            if (txtName.Text.Equals(""))
-            {
-                erori.Add("You have not entered the name");
-            }
+            this.form.removepnl("pnlUpdate");
+            this.form.Controls.Add(new pnlCards(idClient, recipes,form));
+            this.form.button4.Visible = true;
 
-            if (txtIngredients.Text.Equals(""))
-            {
-                erori.Add("You have not entered the ingredients");
-            }
-
-            if (txtSteps.Text.Equals(""))
-            {
-                txtSteps.Focus();
-                erori.Add("You have not entered the steps");
-
-            }
-
-            if (numericTime.Value == 0)
-            {
-                txtSteps.Focus();
-                erori.Add("You have not entered the time");
-
-            }
 
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-
-
-            errors();
-
-            if (erori.Count > 0)
-            {
-                for (int i = 0; i < erori.Count; i++)
-                {
-                    MessageBox.Show(erori[i], "Errors", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-
-
-                this.form.button5.Visible = true;
-
-                int id = controllerRecipes.generareId();
-                string name = txtName.Text;
-                string ingredients = txtIngredients.Text;
-                int time = ((int)numericTime.Value);
-                string steps = txtSteps.Text;
-                string tag = radioBtnActiv();
-
-                string textul = idClient.ToString() + ";" + id.ToString() + ";" + name + ";" + ingredients + ";" + time.ToString() + ";" + steps + ";" + tag;
-
-                controllerRecipes.save(textul);
-                controllerRecipes.load();
-                List<Recipe> recipes = new List<Recipe>();
-                controllerRecipes.getRecipes(recipes);
-                this.form.Controls.Add(new pnlCards(idClient ,recipes,form));
-                this.form.removepnl("pnlAddRecipe");
-
-            }
-
-        }
 
     }
 }

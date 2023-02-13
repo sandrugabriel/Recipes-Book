@@ -130,13 +130,169 @@ namespace Recipes_Book.Controllers
 
         }
 
+        public string nameById(int id)
+        {
+
+            for(int i=0;i<recipes.Count;i++)
+            {
+                if (recipes[i].getId() == id)
+                {
+                    return (recipes[i].getName());
+                }
+            }
+
+            return null;
+        }
+
+        public string ingredientsById(int id)
+        {
+
+            for (int i = 0; i < recipes.Count; i++)
+            {
+                if (recipes[i].getId() == id)
+                {
+                    return (recipes[i].getIngredients());
+                }
+            }
+
+            return null;
+        }
+
+        public string stepsById(int id)
+        {
+
+            for (int i = 0; i < recipes.Count; i++)
+            {
+                if (recipes[i].getId() == id)
+                {
+                    return recipes[i].getSteps();
+                }
+            }
+
+            return null;
+        }
+
+        public string tagById(int id)
+        {
+
+            for (int i = 0; i < recipes.Count; i++)
+            {
+                if (recipes[i].getId() == id)
+                {
+                    return recipes[i].getTag();
+                }
+            }
+
+            return null;
+        }
 
 
+        public int timeById(int id)
+        {
+
+            for (int i = 0; i < recipes.Count; i++)
+            {
+                if (recipes[i].getId() == id)
+                {
+                    return recipes[i].getCookintTime();
+                }
+            }
+
+            return -1;
+        }
+
+        public string toSaveFisier()
+        {
+
+            string t = "";
+
+            for (int i = 0; i < recipes.Count; i++)
+            {
+                t += recipes[i].toSave() + "\n";
+            }
+
+            return t;
+        }
+
+        public void save()
+        {
+            String path = Application.StartupPath + @"/data/recipes.txt";
+            StreamWriter streamWriter = new StreamWriter(path);
+
+            streamWriter.Write(this.toSaveFisier());
+
+            streamWriter.Close();
+        }
+
+        public void setNume(int id, string nume)
+        {
+
+            for (int i = 0; i < recipes.Count; i++)
+            {
+                if (recipes[i].getId() == id)
+                {
+                    recipes[i].setName(nume);
+                }
+            }
 
 
+        }
+
+        public void setIngredients(int id, string ingr)
+        {
+
+            for (int i = 0; i < recipes.Count; i++)
+            {
+                if (recipes[i].getId() == id)
+                {
+                    recipes[i].setIngredients(ingr);
+                }
+            }
 
 
+        }
 
+        public void setsteps(int id, string steps)
+        {
+
+            for (int i = 0; i < recipes.Count; i++)
+            {
+                if (recipes[i].getId() == id)
+                {
+                    recipes[i].setSteps(steps);
+                }
+            }
+
+
+        }
+
+        public void settag(int id, string tag)
+        {
+
+            for (int i = 0; i < recipes.Count; i++)
+            {
+                if (recipes[i].getId() == id)
+                {
+                    recipes[i].setTag(tag);
+                }
+            }
+
+
+        }
+
+        public void settime(int id, int time)
+        {
+
+            for (int i = 0; i < recipes.Count; i++)
+            {
+                if (recipes[i].getId() == id)
+                {
+                    recipes[i].setCookingTime(time);
+                }
+            }
+
+
+        }
 
 
     }

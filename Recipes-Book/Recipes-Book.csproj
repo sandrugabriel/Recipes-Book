@@ -78,6 +78,9 @@
     <Compile Include="Panels\pnlLogin.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Panels\pnlMyRecipes.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Panels\pnlSignUp.cs">
       <SubType>Component</SubType>
     </Compile>

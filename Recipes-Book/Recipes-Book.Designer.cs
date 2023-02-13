@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,37 +50,16 @@
             this.panel3.Size = new System.Drawing.Size(1073, 88);
             this.panel3.TabIndex = 3;
             // 
-            // button5
+            // label2
             // 
-            this.button5.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(890, 17);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(127, 43);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "New Recipe";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(757, 17);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(127, 43);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "My Recipes";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(12, 17);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(143, 57);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Recipes Book";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(422, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 30);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "label2";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -92,16 +71,39 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Welcome,";
             // 
-            // label2
+            // button5
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(422, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 30);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "label2";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.button5.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(890, 10);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(154, 57);
+            this.button5.TabIndex = 2;
+            this.button5.Text = "New Recipe";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(730, 10);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(154, 57);
+            this.button4.TabIndex = 1;
+            this.button4.Text = "My Recipes";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(12, 17);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(143, 57);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "Back";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Visible = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Form1
             // 

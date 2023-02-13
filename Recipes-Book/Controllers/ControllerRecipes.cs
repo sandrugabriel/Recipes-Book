@@ -72,6 +72,23 @@ namespace Recipes_Book.Controllers
 
         }
 
+        public void getMyRecipes(List<Recipe> recipes1, int idClient)
+        {
+
+            for (int i = 0; i < recipes.Count; i++)
+            {
+                if (recipes[i].getIdClient() == idClient)
+                {
+
+                Recipe a = recipes[i];
+                recipes1.Add(a);
+                }
+
+            }
+
+
+        }
+
         public Recipe getRecipeById(int id)
         {
 

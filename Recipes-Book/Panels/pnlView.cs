@@ -52,7 +52,9 @@ namespace Recipes_Book.Panels
             this.Size = new System.Drawing.Size(785, 475);
             this.Location = new System.Drawing.Point(6, 82);
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            
+
+            this.form.button4.Visible = false;
+            this.form.button5.Visible = false;
 
             Font font = new Font("Microsoft YaHei UI Light", 20);
             Font font1 = new Font("Microsoft YaHei UI Light", 14);
@@ -186,7 +188,8 @@ namespace Recipes_Book.Panels
 
             this.form.removepnl("pnlView");
             this.form.Controls.Add(new pnlCards(idClient, recipes, form));
-
+            this.form.button4.Visible = true;
+            this.form.button5.Visible = true;
 
         }
 

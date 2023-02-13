@@ -17,7 +17,7 @@ namespace Recipes_Book
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1(590804936));
+            Application.Run(new FormLogin());
 
         }
     }

@@ -50,6 +50,7 @@ namespace Recipes_Book.Panels
             controllerRecipes = new ControllerRecipes();
             form = form1;
             id = id1;
+            this.form.button5.Visible = false;
             this.Name = "pnlUpdate";
             this.Size = new System.Drawing.Size(785, 475);
             this.Location = new System.Drawing.Point(6, 82);
@@ -191,6 +192,7 @@ namespace Recipes_Book.Panels
             recipes.Clear();
             controllerRecipes.getMyRecipes(recipes, idClient);
 
+            this.form.button5.Visible = true;
 
             this.form.removepnl("pnlUpdate");
             this.form.Controls.Add(new pnlMyRecipes(idClient,recipes,form));
@@ -254,6 +256,9 @@ namespace Recipes_Book.Panels
             controllerRecipes.settime(id, ((int)numericTime.Value));
             controllerRecipes.settag(id, radioBtnActiv());
             controllerRecipes.save();
+
+
+            this.form.button5.Visible = true;
 
             this.form.removepnl("pnlUpdate");
             this.form.Controls.Add(new pnlCards(idClient, recipes,form));

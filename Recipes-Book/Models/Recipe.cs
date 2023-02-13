@@ -115,6 +115,9 @@ namespace Recipes_Book.Models
             this.image = image;
         }
 
-
+        public string toSave()
+        {
+            return idClient.ToString() + ";" + id.ToString() + ";" + name + ";" + ingredients + ";" + cookingTime.ToString() + ";" + steps + ";" + tag;
+        }
     }
 }

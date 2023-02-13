@@ -87,6 +87,9 @@
     <Compile Include="Panels\pnlStart.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Panels\pnlUpdate.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Recipes-Book.cs">
       <SubType>Form</SubType>
     </Compile>

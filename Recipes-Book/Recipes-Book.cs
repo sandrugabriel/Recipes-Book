@@ -34,7 +34,7 @@ namespace Recipes_Book
             recipes = new List<Recipe>();
             controllerRecipes.getRecipes(recipes);
 
-            this.Controls.Add(new pnlCards(recipes,this));
+            this.Controls.Add(new pnlCards(id,recipes,this));
             this.button3.Visible = false;
         }
 
@@ -71,7 +71,7 @@ namespace Recipes_Book
             recipes.Clear();
             controllerRecipes.getRecipes(recipes);
 
-            this.Controls.Add(new pnlCards(recipes,this));
+            this.Controls.Add(new pnlCards(id,recipes,this));
             this.removepnl("pnlAddRecipe");
             this.removepnl("pnlMyRecipes");
             this.button5.Visible = true;
@@ -99,7 +99,7 @@ namespace Recipes_Book
             this.removepnl("pnlCards");
             this.removepnl("pnlAddRecipe");
             controllerRecipes.getMyRecipes(recipes, id);
-            this.Controls.Add(new pnlMyRecipes(recipes,this));
+            this.Controls.Add(new pnlMyRecipes(id,recipes,this));
         }
     }
 }

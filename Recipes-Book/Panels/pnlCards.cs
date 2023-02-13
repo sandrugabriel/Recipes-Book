@@ -70,6 +70,7 @@ namespace Recipes_Book.Panels
                     string title = pnlcard.lblTitle1.Text;
                     int id = controllerRecipes.idByNume(title);
                     this.form.removepnl("pnlCards");
+                    this.form.Controls.Add(new pnlView(idClient, id, form));
                 }
                 x += 200;
 

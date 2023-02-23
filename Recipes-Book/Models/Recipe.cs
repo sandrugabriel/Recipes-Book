@@ -44,7 +44,7 @@ namespace Recipes_Book.Models
             this.cookingTime= int.Parse(prop[4]);
             this.steps = prop[5];
             this.tag = prop[6];
-
+            this.image = prop[7];
         }
 
 
@@ -113,6 +113,17 @@ namespace Recipes_Book.Models
         public void setImage(string image)
         {
             this.image = image;
+        }
+
+        public string descreiere()
+        {
+
+            string t = "";
+
+            t += "Title: " + getName() + "\n";
+            t += "Imagine: " + getImage() + "\n";
+
+            return t;
         }
 
         public string toSave()

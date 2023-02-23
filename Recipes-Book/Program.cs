@@ -15,9 +15,12 @@ namespace Recipes_Book
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormLogin());
+           // Application.EnableVisualStyles();
+          //  Application.SetCompatibleTextRenderingDefault(false);
+           // Application.Run(new FormLogin());
+
+            ControllerRecipes controllerRecipes = new ControllerRecipes();
+            controllerRecipes.afisare();
 
         }
     }

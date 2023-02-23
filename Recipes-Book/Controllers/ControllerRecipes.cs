@@ -41,7 +41,13 @@ namespace Recipes_Book.Controllers
             streamReader.Close();
         }
 
+        public void afisare() {
 
+            for (int i = 0; i<= recipes.Count; i++){
+                MessageBox.Show(recipes[i].descreiere());
+            }
+        
+        }
 
         public int idByNume(string nume)
         {

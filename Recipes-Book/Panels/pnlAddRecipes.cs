@@ -4,9 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace Recipes_Book.Panels
 {
@@ -37,6 +39,10 @@ namespace Recipes_Book.Panels
 
         ControllerRecipes controllerRecipes;
 
+        Button btnAddImage;
+
+        PictureBox pictureBox;
+
         private int idClient;
 
         List<string> erori;
@@ -62,11 +68,11 @@ namespace Recipes_Book.Panels
             this.Controls.Add(txtName);
             this.lblName.Text = "Name";
             this.lblName.Font = font;
-            this.lblName.Location = new System.Drawing.Point(58, 85);
+            this.lblName.Location = new System.Drawing.Point(58, 55);
             this.lblName.AutoSize = true;
             this.txtName.Font = font1;
             this.txtName.Size = new System.Drawing.Size(198, 34);
-            this.txtName.Location = new System.Drawing.Point(58, 130);
+            this.txtName.Location = new System.Drawing.Point(58, 100);
 
 
 
@@ -159,7 +165,44 @@ namespace Recipes_Book.Panels
             this.btnSave.BackColor = System.Drawing.Color.White;
             this.btnSave.Click += new EventHandler(btnSave_Click);
 
+            //AddImage
+            btnAddImage = new Button();
+            this.Controls.Add(btnAddImage);
+            this.btnAddImage.Location = new System.Drawing.Point(110, 230);
+            this.btnAddImage.Text = "Upload";
+            this.btnAddImage.Font = new Font("Microsoft YaHei UI Light", 10);
+            this.btnAddImage.Size = new System.Drawing.Size(90, 50);
+            this.btnAddImage.Click += new EventHandler(btnAddImage_Click);
+            pictureBox = new PictureBox();
+            this.Controls.Add(pictureBox);
+            this.pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            this.pictureBox.Location = new System.Drawing.Point(70,150);
+            this.pictureBox.Size = new System.Drawing.Size(170,75);
+            this.pictureBox.BackColor = System.Drawing.Color.White;
+            
+
             this.form.button5.Visible = true;
+        }
+
+        private string uploadImage;
+
+        private void btnAddImage_Click(object sender, EventArgs e)
+        {
+
+           OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.ShowDialog();
+
+            string image = openFileDialog.FileName;
+
+            this.pictureBox.Image = Image.FromFile(image);
+
+
+            string[] imag = image.Split('\\');
+
+            uploadImage = imag[imag.Length-1];
+
+
         }
 
         public string radioBtnActiv()
@@ -240,8 +283,9 @@ namespace Recipes_Book.Panels
                 int time = ((int)numericTime.Value);
                 string steps = txtSteps.Text;
                 string tag = radioBtnActiv();
+                string image = uploadImage;
 
-                string textul = idClient.ToString() + ";" + id.ToString() + ";" + name + ";" + ingredients + ";" + time.ToString() + ";" + steps + ";" + tag;
+                string textul = idClient.ToString() + ";" + id.ToString() + ";" + name + ";" + ingredients + ";" + time.ToString() + ";" + steps + ";" + tag + ";" + image;
 
                 controllerRecipes.save(textul);
                 controllerRecipes.load();

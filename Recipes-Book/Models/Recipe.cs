@@ -44,7 +44,7 @@ namespace Recipes_Book.Models
             this.cookingTime= int.Parse(prop[4]);
             this.steps = prop[5];
             this.tag = prop[6];
-
+            this.image = prop[7];
         }
 
 
@@ -117,7 +117,7 @@ namespace Recipes_Book.Models
 
         public string toSave()
         {
-            return idClient.ToString() + ";" + id.ToString() + ";" + name + ";" + ingredients + ";" + cookingTime.ToString() + ";" + steps + ";" + tag;
+            return idClient.ToString() + ";" + id.ToString() + ";" + name + ";" + ingredients + ";" + cookingTime.ToString() + ";" + steps + ";" + tag + ";" + image;
         }
     }
 }

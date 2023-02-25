@@ -1,4 +1,5 @@
 ﻿using Recipes_Book.Controllers;
+using Recipes_Book.Mockups;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace Recipes_Book
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormLogin());
+            Application.Run(new Form1(1));
 
         }
     }

@@ -16,5 +16,15 @@ namespace Recipes_Book.Mockups
         {
             InitializeComponent();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+
+            openFileDialog.ShowDialog();
+
+            MessageBox.Show(openFileDialog.FileName);
+        }
     }
 }

@@ -34,6 +34,9 @@ namespace Recipes_Book.Panels
         Button btnUpdate;
         Button btnDelete;
         Button btnCancel;
+        Button btnUpload;
+
+        PictureBox pictureBox;
 
 
         Form1 form;
@@ -193,8 +196,50 @@ namespace Recipes_Book.Panels
             string radioSel = controllerRecipes.tagById(id);
             getradio(radioSel);
 
+
+            //Image
+            pictureBox = new PictureBox();
+            this.Controls.Add(pictureBox);
+            this.pictureBox.Location = new System.Drawing.Point(73, 180);
+            this.pictureBox.Size = new System.Drawing.Size(160, 100);
+            this.pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            string path = Application.StartupPath + @"/images/";
+            string image = controllerRecipes.imageById(id);
+            this.pictureBox.Image = Image.FromFile(path + image);
+
+            //Button Upload
+            btnUpload = new Button();
+            this.Controls.Add(btnUpload);
+
+            this.btnUpload.Location = new System.Drawing.Point(240, 230);
+            this.btnUpload.Text = "Upload";
+            this.btnUpload.Size = new System.Drawing.Size(80, 45);
+            this.btnUpload.Click += new EventHandler(btnUpload_Click);
+
             recipes = new List<Recipe>();
             controllerRecipes.getRecipes(recipes);
+        }
+
+        private string uploadImage;
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.ShowDialog();
+
+            string image = openFileDialog.FileName;
+
+            this.pictureBox.Image = Image.FromFile(image);
+
+
+            string[] imag = image.Split('\\');
+
+            uploadImage = imag[imag.Length - 1];
+
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -221,7 +266,6 @@ namespace Recipes_Book.Panels
 
         }
 
-
         public void getradio(string a)
         {
             if (radBreakfast.Text.Equals(a))
@@ -242,7 +286,6 @@ namespace Recipes_Book.Panels
             }
 
         }
-
 
         public string radioBtnActiv()
         {
@@ -266,7 +309,6 @@ namespace Recipes_Book.Panels
             return null;
         }
 
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
 
@@ -275,6 +317,7 @@ namespace Recipes_Book.Panels
             controllerRecipes.setsteps(id,txtSteps.Text);
             controllerRecipes.settime(id, ((int)numericTime.Value));
             controllerRecipes.settag(id, radioBtnActiv());
+            controllerRecipes.setImage(id, uploadImage);
             controllerRecipes.save();
 
 

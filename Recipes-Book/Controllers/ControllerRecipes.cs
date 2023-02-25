@@ -238,6 +238,19 @@ namespace Recipes_Book.Controllers
 
         }
 
+        public void setImage(int id, string image)
+        {
+
+            for (int i = 0; i < recipes.Count; i++)
+            {
+                if (recipes[i].getId() == id)
+                {
+                    recipes[i].setImage(image);
+                }
+
+            }
+        }
+
         public void setIngredients(int id, string ingr)
         {
 
@@ -328,7 +341,19 @@ namespace Recipes_Book.Controllers
             stream.Close();
         }
 
+        public string imageById(int id)
+        {
 
+            for(int i = 0; i < recipes.Count; i++)
+            {
+                if (recipes[i].getId() == id)
+                {
+                    return recipes[i].getImage();
+                }
+            }
+
+            return null;
+        }
 
 
 

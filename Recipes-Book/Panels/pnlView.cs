@@ -37,6 +37,9 @@ namespace Recipes_Book.Panels
 
         ControllerRecipes controllerRecipes;
 
+        PictureBox pictureBox;
+
+
         private int id;
         private int idClient;
 
@@ -178,6 +181,18 @@ namespace Recipes_Book.Panels
 
             recipes = new List<Recipe>();
             controllerRecipes.getRecipes(recipes);
+
+            //PictureBox
+            pictureBox = new PictureBox();
+            this.Controls.Add(pictureBox);
+            string image = controllerRecipes.imageById(id);
+            string path = Application.StartupPath + @"/images/" + image;
+            this.pictureBox.Image = Image.FromFile(path);
+            this.pictureBox.Location = new System.Drawing.Point(73, 180);
+            this.pictureBox.Size = new System.Drawing.Size(160, 100);
+            this.pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

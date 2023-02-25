@@ -21,6 +21,8 @@ namespace Recipes_Book.Panels
         Recipe recipe;
         Form1 form;
 
+        PictureBox pictureBox;
+
         private int id;
 
         public pnlCard(Recipe recipe1, Form1 form1)
@@ -55,6 +57,16 @@ namespace Recipes_Book.Panels
 
 
             id = recipe1.getId();
+
+            //PictureBox
+            pictureBox = new PictureBox();
+            this.Controls.Add(pictureBox);
+
+
+            string path = Application.StartupPath + @"\images\" + recipe.getImage();
+            this.pictureBox.Image = Image.FromFile(path);
+            this.pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            this.pictureBox.Location = new System.Drawing.Point(31, 72);
 
         }
 
